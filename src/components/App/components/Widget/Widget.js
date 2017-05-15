@@ -1,29 +1,11 @@
 import React, {Component} from 'react'
-import axios from 'axios'
+import PropTypes from 'prop-types';
 
-export default class Widget extends Component{
- constructor(){
-    super();
-    this.state = {
-      number: 0
-    };
-  }
-
-  componentWillMount(){
-    // Called the first time the component is loaded right before the component is added to the page
-  }
-
-
-  componentDidMount(){
-    // Called after the component has been rendered into the page
-    axios.get('http://localhost:5000/statistics/total_players')
-    .then(response => {
-        this.setState({number: response.data['total_players']})
-    });
-  }
+class Widget extends Component{
 
   componentWillReceiveProps(nextProps){
     // Called when the props provided to the component are changed
+    this.setState(nextProps);
   }
 
   componentWillUpdate(nextProps, nextState){
@@ -41,8 +23,8 @@ export default class Widget extends Component{
           <div className="info-box">
             <span className="info-box-icon bg-green"><i className="fa fa-user"></i></span>
             <div className="info-box-content">
-              <span className="info-box-text">{this.props.text}</span>
-              <span className="info-box-number">{this.state.number}</span>
+              <span className="info-box-text">{this.props.title}</span>
+              <span className="info-box-number">{this.props.number}</span>
             </div>
           </div>
         </div>
@@ -50,3 +32,15 @@ export default class Widget extends Component{
   }
 
 }
+
+/**
+* Some Validations
+*/
+Widget.propTypes = {
+  title:  PropTypes.string,
+  number: PropTypes.number
+}
+
+
+export default Widget;
+
