@@ -1,5 +1,7 @@
 import React,{Component} from 'react'
-import Widget from './Widget/Widget'
+import NumberWidget from './Widget/NumberWidget'
+import GraphWidget from './Widget/GraphWidget'
+
 import client from '../../../services/client'
 
 export default class Content extends Component{
@@ -25,9 +27,15 @@ export default class Content extends Component{
         <div className="content-wrapper">
           <section className="content">
             <h1>Welcome to Metagame!</h1>
-            <Widget title="Total of Players" number={this.state.total_players} />
+            <NumberWidget title="Total of Players"
+                    number={this.state.total_players}
+                    color="green"
+                    icon="user" />
+            <GraphWidget title="Player's distribution"/>
+
           </section>
         </div>
     );
   }
 }
+

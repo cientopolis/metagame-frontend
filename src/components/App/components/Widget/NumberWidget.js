@@ -1,7 +1,15 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types';
 
-class Widget extends Component{
+class NumberWidget extends Component{
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      total_players: 0
+    };
+  }
 
   componentWillReceiveProps(nextProps){
     // Called when the props provided to the component are changed
@@ -21,7 +29,9 @@ class Widget extends Component{
     return(
         <div className="col-md-3 col-sm-6 col-xs-12">
           <div className="info-box">
-            <span className="info-box-icon bg-green"><i className="fa fa-user"></i></span>
+            <span className={'info-box-icon bg-'+ this.props.color}>
+              <i className={'fa fa-'+ this.props.icon}></i>
+            </span>
             <div className="info-box-content">
               <span className="info-box-text">{this.props.title}</span>
               <span className="info-box-number">{this.props.number}</span>
@@ -36,11 +46,17 @@ class Widget extends Component{
 /**
 * Some Validations
 */
-Widget.propTypes = {
+NumberWidget.propTypes = {
   title:  PropTypes.string,
+  color:  PropTypes.string,
+  icon:   PropTypes.string,
   number: PropTypes.number
 }
 
+NumberWidget.defaultProps = {
+  icon: "user",
+  color: "red",
+};
 
-export default Widget;
+export default NumberWidget;
 
