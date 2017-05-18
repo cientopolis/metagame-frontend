@@ -5,10 +5,6 @@ class NumberWidget extends Component{
 
   constructor(props) {
     super(props);
-
-    this.state = {
-      total_players: 0
-    };
   }
 
   componentWillReceiveProps(nextProps){
