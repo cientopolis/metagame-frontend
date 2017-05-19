@@ -7,7 +7,7 @@ class Box extends Component{
   render(){
     return(
       <div className="col-md-6">
-        <div className="box box-default">
+        <div className={"box box-"+this.props.colorBox}>
           <BoxHeader title={this.props.title}/>
           <BoxBody>
             {this.props.children}

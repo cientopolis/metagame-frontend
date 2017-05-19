@@ -10,19 +10,27 @@ export default class Content extends Component{
     super(props);
 
     this.state = {
-      total_players: 0
+      total_players: 0,
+      daily_activity: {},
+      players_distribution:[]
     };
-  }
 
-  componentDidMount() {
-    //We set the total of players using a Client.
+    client.dailyActivity().then(data =>{
+      this.setState({daily_activity: data.daily_activity});
+    });
+
     client.totalPlayers().then(data => {
-      this.setState({total_players: data.total_players})
+      this.setState(data)
     });
 
     client.playersDistribution().then(data => {
       this.setState({players_distribution: Object.values(data.players_distribution)});
-    } );
+    });
+
+  }
+
+  componentDidMount() {
+    //We set the total of players using a Client.
 
   }
 
@@ -37,6 +45,17 @@ export default class Content extends Component{
       }]
     };
 
+    const daily_act_data = {
+      labels: Object.keys(this.state.daily_activity).map((date) => date.toString()),
+      datasets: [{
+        data: Object.values(this.state.daily_activity),
+        label: "Number of obtained badges",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "rgba(75,192,192,0.4)",
+            borderColor: "rgba(75,192,192,1)",
+      }]
+    };
 
     return (
         <div className="content-wrapper">
@@ -56,12 +75,15 @@ export default class Content extends Component{
                     color="black"
                     icon="clock-o" />
             <GraphWidget
-              title="Player's distribution"
+              colorBox="primary"
+              title="Players' distribution"
               data={players_dist_data}
               chart="Doughnut" />
+
             <GraphWidget
-              title="Player's distribution"
-              data={players_dist_data}
+              colorBox="success"
+              title="Players' daily activity"
+              data={daily_act_data}
               chart="Line" />
             </div>
 

@@ -19,8 +19,11 @@ export default {
   //Players distribution
   playersDistribution: function(){
     return this.getRequest('/statistics/players_distribution')
-  }
+  },
 
+  dailyActivity: function(){
+    return this.getRequest('/statistics/daily_activity')
+  }
 
 }
 
