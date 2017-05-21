@@ -23,6 +23,10 @@ export default {
 
   dailyActivity: function(){
     return this.getRequest('/statistics/daily_activity')
+  },
+
+  getPlayerInfo(email){
+    return this.getRequest('/players?email=' + email);
   }
 
 }
