@@ -6,8 +6,8 @@ export default class Content extends Component{
     return(
       <div className="content-wrapper">
         <section className="content">
-          <center><h1>Welcome to Metagame!</h1></center>
-          {this.props.children}
+            <h1>Welcome to Metagame!</h1>
+            {this.props.children}
         </section>
       </div>
     );

@@ -11,9 +11,6 @@ export default class Menu extends Component{
           <li>
             <Link to="/monitor"><i className="fa fa-user"></i><span>Monitor</span></Link>
           </li>
-          <li>
-            <Link to="/players"><i className="fa fa-users"></i><span>Players' info</span></Link>
-          </li>
         </ul>
       </Router>
 
