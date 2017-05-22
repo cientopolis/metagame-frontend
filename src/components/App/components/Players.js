@@ -1,33 +1,33 @@
 import React,{Component} from 'react'
 import client from '../../../services/client'
-import Box from './Widget/Box'
-import ProfileImage from './Widget/ProfileImage'
+import LoadingBox from './Widget/LoadingBox'
+import PlayerProfile from './Widget/PlayerProfile'
 
 export default class Players extends Component {
 
   constructor(props) {
     super(props);
-    this.state={
-      player: {}
-    };
+    this.state={player:null};
+  }
+
+  componentDidMount() {
     const player  = this.props.match.params.player;
     client.getPlayerInfo(player).then(data =>{
       this.setState(data);
     });
-
   }
+
 
   render(){
     //const query = this.props.location;
     //const date = query.search;
     //const player  = this.props.match.params.player;
-    console.log(this.state.player);
-    return (
-        <Box sizeBox="10" colorBox="primary" title="Player information" extraClass="box-profile">
-          <ProfileImage email={this.state.player.email}/>
-          <h3 className="profile-username text-center">{this.state.player.email}</h3>
-        </Box>
-      );
+    if (this.state.player == null)
+      return(<LoadingBox/>);
+    else
+      return (<PlayerProfile player={this.state.player}/>);
   }
+
 }
 
+//<ProfileImage email={this.state.player.email}/>
