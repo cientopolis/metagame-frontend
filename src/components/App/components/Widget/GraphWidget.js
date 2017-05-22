@@ -5,12 +5,6 @@ import {Doughnut,Line} from 'react-chartjs-2';
 
 
 class GraphWidget extends Component{
-  constructor(props) {
-    super(props);
-
-    this.state = {
-    };
-  }
 
   render() {
 

@@ -59,7 +59,7 @@ export default class Monitor extends Component{
 
     return (
       <div>
-            <center><h1>Welcome to Metagame!</h1></center>
+            <center><h1>Metagame Monitor</h1></center>
             <div className="row">
             <NumberWidget title="Total of Players"
                     number={this.state.total_players}

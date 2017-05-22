@@ -26,7 +26,7 @@ export default {
   },
 
   getPlayerInfo(email){
-    return this.getRequest('/players?email=' + email);
+    return this.getRequest('/player_info?email=' + email);
   }
 
 }

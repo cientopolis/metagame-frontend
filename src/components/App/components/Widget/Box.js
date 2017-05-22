@@ -6,8 +6,8 @@ class Box extends Component{
 
   render(){
     return(
-      <div className="col-md-6">
-        <div className={"box box-"+this.props.colorBox}>
+      <div className={"col-md-"+this.props.sizeBox}>
+        <div className={"box box-" + this.props.colorBox +" "+this.props.extraClass }>
           <BoxHeader title={this.props.title}/>
           <BoxBody>
             {this.props.children}
@@ -17,5 +17,11 @@ class Box extends Component{
       );
   }
 }
+
+Box.defaultProps = {
+  colorBox: "default",
+  sizeBox: "6",
+  extraClass:""
+};
 
 export default Box;
