@@ -5,18 +5,33 @@ import PlayerProfile from './Widget/PlayerProfile'
 
 export default class Players extends Component {
 
+
   constructor(props) {
     super(props);
     this.state={player:null};
   }
 
-  componentDidMount() {
-    const player  = this.props.match.params.player;
+  updatePlayerInfo(player){
     client.getPlayerInfo(player).then(data =>{
       this.setState(data);
     });
   }
 
+  componentDidMount() {
+    const player  = this.props.match.params.player;
+    this.updatePlayerInfo(player);
+  }
+
+
+  componentWillReceiveProps(nextProps) {
+    const player  = nextProps.match.params.player;
+    this.updatePlayerInfo(player);
+  }
+
+
+  componentWillUnmount() {
+    this.setState({player:null});
+  }
 
   render(){
     //const query = this.props.location;
@@ -29,5 +44,3 @@ export default class Players extends Component {
   }
 
 }
-
-//<ProfileImage email={this.state.player.email}/>

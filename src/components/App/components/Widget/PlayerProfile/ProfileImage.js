@@ -8,7 +8,6 @@ class ProfileImage extends Component{
   }
 
   render(){
-    console.log(md5(this.props.email));
     var src = "https://www.gravatar.com/avatar/"+ md5(this.props.email);
     return(
           <img className="profile-user-img img-responsive img-circle" src={src}/>
