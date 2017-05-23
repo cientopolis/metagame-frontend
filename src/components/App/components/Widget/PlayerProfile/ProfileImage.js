@@ -5,12 +5,17 @@ class ProfileImage extends Component{
 
   constructor(props) {
     super(props);
+    this.state={src:''}
+  }
+
+  componentWillMount() {
+    this.setState({src:"https://www.gravatar.com/avatar/" + md5(this.props.email)})
   }
 
   render(){
-    var src = "https://www.gravatar.com/avatar/"+ md5(this.props.email);
+
     return(
-          <img className="profile-user-img img-responsive img-circle" src={src}/>
+          <img className="profile-user-img img-responsive img-circle" src={this.state.src}/>
       );
   }
 }

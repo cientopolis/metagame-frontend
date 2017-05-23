@@ -17,6 +17,9 @@ export default class Monitor extends Component{
       players_distribution:[]
     };
 
+  }
+
+  componentWillMount() {
     client.dailyActivity().then(data =>{
       this.setState({daily_activity: data.daily_activity});
     });
@@ -36,12 +39,6 @@ export default class Monitor extends Component{
     client.playersDistribution().then(data => {
       this.setState({players_distribution: Object.values(data.players_distribution)});
     });
-
-  }
-
-  componentDidMount() {
-    //We set the total of players using a Client.
-
   }
 
   render() {

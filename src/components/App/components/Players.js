@@ -17,7 +17,7 @@ export default class Players extends Component {
     });
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const player  = this.props.match.params.player;
     this.updatePlayerInfo(player);
   }
