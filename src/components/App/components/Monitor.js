@@ -11,12 +11,22 @@ export default class Monitor extends Component{
 
     this.state = {
       total_players: 0,
+      one_time_visitors: 0,
+      boredom_dropouts: 0,
       daily_activity: {},
       players_distribution:[]
     };
 
     client.dailyActivity().then(data =>{
       this.setState({daily_activity: data.daily_activity});
+    });
+
+    client.oneTimeVisitors().then(data =>{
+      this.setState(data)
+    });
+
+    client.boredomDropouts().then(data =>{
+      this.setState(data);
     });
 
     client.totalPlayers().then(data => {
@@ -66,11 +76,11 @@ export default class Monitor extends Component{
                     color="green"
                     icon="users" />
             <NumberWidget title="Boredom dropouts"
-                    number={this.state.total_players}
+                    number={this.state.boredom_dropouts}
                     color="red"
                     icon="user-times" />
             <NumberWidget title="One time visitors"
-                    number={this.state.total_players}
+                    number={this.state.one_time_visitors}
                     color="black"
                     icon="clock-o" />
             <GraphWidget

@@ -16,6 +16,14 @@ export default {
     return this.getRequest('/statistics/total_players')
   },
 
+  oneTimeVisitors: function(){
+    return this.getRequest('/statistics/one_time_visitors')
+  },
+
+  boredomDropouts: function(){
+    return this.getRequest('/statistics/boredom_dropouts')
+  },
+
   //Players distribution
   playersDistribution: function(){
     return this.getRequest('/statistics/players_distribution')

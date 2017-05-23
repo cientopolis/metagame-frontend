@@ -5,14 +5,24 @@ import ProfileImage from './PlayerProfile/ProfileImage'
 export default class PlayerProfile extends Component{
 
   render() {
+      console.log(this.props.player);
 
     return(
-      <Box sizeBox="10" colorBox="primary" title="Player information" extraClass="box-profile">
+      <Box sizeBox="12" colorBox="primary" title="Player information" extraClass="box-profile">
         <ProfileImage email={this.props.player.email}/>
-        <h3 className="profile-username text-center">{this.props.player.email}</h3>
+        <h3 className="profile-username text-center">
+          {this.props.player.email} <span className="label label-success">{this.props.player.profile}</span>
+        </h3>
+        <div className="row">
+          <div className=" col-md-offset-5 col-md-2">
+            <a className="btn btn-primary btn-block"><b>Rank {this.props.player.rank}</b></a>
+          </div>
+        </div>
+
       </Box>
 
     );
   }
+
 
 }

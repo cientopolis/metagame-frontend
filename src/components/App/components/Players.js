@@ -39,7 +39,7 @@ export default class Players extends Component {
       return(<LoadingBox/>);
     //Player not found
     else if(Object.keys(this.state.player).length === 0)
-      return (<h1><i className="fa fa-user-times"/>Player Not found.</h1>);
+      return (<h1><img src="http://cultofthepartyparrot.com/parrots/hd/parrot.gif"/>Player Not found.</h1>);
     //Player found
     else
       return (<PlayerProfile player={this.state.player}/>);
