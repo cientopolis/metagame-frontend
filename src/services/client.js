@@ -1,11 +1,19 @@
 import axios from "axios";
+import {METAGAME_API,METAGAME_TOKEN} from "../config/environment";
 
-const METAGAME_API = "http://localhost:5000";
+//axios.defaults.headers.common['Authorization'] = 'Token token='+METAGAME_TOKEN;
+//axios.defaults.headers.get['Content-Type'] = 'application/json';
+
+var client = axios.create({
+  timeout: 1000,
+  headers: {'Authorization': 'Token token='+METAGAME_TOKEN }
+});
+
 
 export default {
 
   getRequest: function(url){
-    return axios.get(METAGAME_API+url)
+    return client.get(METAGAME_API+url)
       .then(response => {
         return response.data
     });
