@@ -11,10 +11,11 @@ To use this application you will need the following to be installed:
  - npm v3 or superior.
 
 ## Pre-configuration
- Inside the folder src/config there is a file called: environment.js
- Change the values inside:
+ Inside the folder src/config create a file called: environment.js and change the values inside (Following "environment_example.js" as example)
+
  - METAGAME_API: URL of Metagame-API (E.g: "http://localhost:5000")
  - METAGAME_TOKEN: Token of your project in Metagame-API (E.g: "tok3nex4mpl3093je23nuashdks93232")
+
 ## Usage
 
 In order to use this application, move to the main folder and execute:
