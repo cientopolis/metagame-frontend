@@ -21,6 +21,6 @@ To use this application you will need the following to be installed:
 In order to use this application, move to the main folder and execute:
 
 ```
-  $ npm start
+  $ npm install && start
 
 ```
